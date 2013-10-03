@@ -84,5 +84,6 @@
 		{{javascript}}
 	</script>
 	<script src="/js/jquery.qtip.min.js"></script>
+	<script src="/js/uservoice.js"></script>
 </body>
 </html>
