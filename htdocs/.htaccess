@@ -1,6 +1,8 @@
 # Specify our error pages.
 ErrorDocument 404 /404.php
 
+php_flag display_errors off
+
 RewriteEngine On
 RewriteBase /
 
