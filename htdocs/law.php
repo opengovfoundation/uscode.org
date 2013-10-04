@@ -27,6 +27,7 @@ $laws = new Law();
  * Use the section number in the URL as the section number that we're looking up.
  */
 $laws->section_number = urldecode($_GET['section_number']);
+$laws->structure_identifier = urldecode($_GET['structure_identifier']);
 
 /*
  * Retrieve a copy of the law.

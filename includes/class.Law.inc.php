@@ -32,7 +32,7 @@ class Law
 		 * If neither a section number nor a law ID has been passed to this function, then there's
 		 * nothing to do.
 		 */
-		if (!isset($this->section_number) && !isset($this->law_id))
+		if (!isset($this->section_number) || !isset($this->structure_identifier) && !isset($this->law_id))
 		{
 			return FALSE;
 		}
@@ -106,12 +106,17 @@ class Law
 		}
 		
 		/*
-		 * Else if we're requesting a law by section number, then make sure that we're getting the
+		 * Else if we're requesting a law by section number and structure_identifier, then make sure that we're getting the
 		 * law from the newest edition of the laws.
 		 */
 		else
 		{
+			//Get the structure identifier as well
+			$struct = new Structure;
+			$struct->identifier = $this->structure_identifier;
+			$this->structure_id = $struct->identifier_to_id();
 			$sql .= ' WHERE section=' . $db->quote($this->section_number) . '
+					AND structure_id=' . $this->structure_id . '
 					AND edition_id=' . EDITION_ID;
 		}
 		
